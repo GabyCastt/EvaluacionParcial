@@ -50,16 +50,16 @@ namespace EvaEva.Controllers
         // GET: Libro/Create
         public IActionResult Create()
         {
-            // Crear una lista de autores con el nombre completo
+            // Crea una lista de autores con el nombre completo
             var autores = _context.Autores
                 .Select(a => new
                 {
                     AutorId = a.AutorId,
-                    NombreCompleto = $"{a.Nombre} {a.Apellido}" // Concatenar nombre y apellido
+                    NombreCompleto = $"{a.Nombre} {a.Apellido}" 
                 })
                 .ToList();
 
-            // Pasar la lista a la vista con el nombre completo del autor
+            // Pasa la lista a la vista con el nombre completo del autor
             ViewData["AutorId"] = new SelectList(autores, "AutorId", "NombreCompleto");
             return View();
         }
@@ -76,7 +76,6 @@ namespace EvaEva.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // Para el caso de error, pasamos la lista de autores nuevamente
             var autores = _context.Autores
                 .Select(a => new
                 {
@@ -103,7 +102,7 @@ namespace EvaEva.Controllers
                 return NotFound();
             }
 
-            // Crear una lista de autores con el nombre completo para el campo de selección
+            // Crea una lista de autores con el nombre completo
             var autores = _context.Autores
                 .Select(a => new
                 {
@@ -146,8 +145,6 @@ namespace EvaEva.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-
-            // Para el caso de error, pasamos la lista de autores nuevamente
             var autores = _context.Autores
                 .Select(a => new
                 {
